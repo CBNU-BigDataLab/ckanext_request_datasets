@@ -1,0 +1,53 @@
+{% extends "page.html" %}
+
+{% block subtitle %}Request Datasets{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active"><a class"active" href="/requests">Request Datasets</a></li>
+{% endblock %}
+
+{% block primary_content %}
+  <section class="module">
+    <div class="module-content">
+      <h1>Create New Request</h1>
+      <form id="createNewBlog" method="POST" enctype="multipart/form-data" action="/request_datasets/save-new">
+        <div class="form-group control-full">
+                <label class="control-label" for="field-title">Email</label>
+                <input type="email" class="form-control" name="email" id="field-email" placeholder="Please enter your email" required="required"/>
+        </div>
+
+        <div class="form-group control-full">       
+		<label class="control-label" for="field-title">Title</label>
+        	<input type="text" class="form-control" name="title" id="field-title" placeholder="Please enter your title" required="required"/>
+        </div>
+	<div class="form-group control-full">
+		<label class="control-label" for="field-notes">Content</label>
+		<div class="controls editor">
+			<textarea id="field-notes" name="notes" cols="20" rows="50" placeholder="Please enter your content" class="form-control" required="required"></textarea>
+                        <script>CKEDITOR.replace('notes')</script>
+		</div>
+	</div>
+        <div class="form-actions">
+             <button class="btn btn-primary" type="submit" name="save"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Send Request</font></font></button>
+	</div>
+      </form>
+    </div>
+  </section>
+{% endblock %}
+
+{% block secondary_content %}
+     {% block info_module %}
+    <section class="module module-narrow module-shallow">
+      <h2 class="module-heading"><i class="fa fa-info-circle"></i> What is Request Datasets?</h2>
+      <div class="module-content">
+        <p>
+          {% trans %}
+          A CKAN Request Dataset is a collection of data resources (such as files),
+          together with a description and other information, at a fixed URL.
+          Request Datasets are what users see when searching for data.
+          {% endtrans %}
+        </p>
+      </div>
+    </section>
+  {% endblock %}
+{% endblock %}
